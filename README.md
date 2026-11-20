@@ -1,5 +1,10 @@
 # facebook-playwright-mcp
 
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![MCP](https://img.shields.io/badge/protocol-MCP-green.svg)](https://modelcontextprotocol.io/)
+[![Playwright](https://img.shields.io/badge/browser-Playwright-orange.svg)](https://playwright.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A Model Context Protocol (MCP) server for personal Facebook automation using Playwright.
 
 ## Features
@@ -9,6 +14,21 @@ A Model Context Protocol (MCP) server for personal Facebook automation using Pla
 - **post_personal_status**: Publish new status updates directly to your timeline.
 - **search_facebook**: Search for posts, people, groups, or pages.
 - **read_page_or_group**: Extract readable content from any specific Facebook link.
+
+## Architecture
+
+```
+AI Client (Antigravity / Claude)
+              │
+              ▼  (JSON-RPC / stdio)
+   Facebook MCP Server (FastMCP)
+              │
+              ▼  (Local Playwright Session)
+   Chromium with Persistent Profile
+              │
+              ▼  (User Actions)
+         Facebook.com
+```
 
 ## Installation
 
@@ -58,7 +78,10 @@ facebook-mcp-login
 }
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup and contribution workflow.
+
 ## Security & Privacy
 
-- All credentials, session data, and cookies remain exclusively on your local machine.
-- The `browser_profile/` directory is strictly ignored in `.gitignore` to prevent accidental credential leaks.
+See [SECURITY.md](SECURITY.md) for security notes and credential protection details.
